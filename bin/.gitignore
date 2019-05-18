@@ -2,11 +2,9 @@
 /Filters.class
 /IntegrationTest.class
 /Module.class
-/application.conf
 /controllers/
 /filters/
-/logback.xml
-/routes
+/models/
 /services/
 /views/
-/models/
+/evolutions/

@@ -1,5 +1,7 @@
 package controllers;
 
+import models.Child;
+import models.Parent;
 import play.mvc.*;
 
 import views.html.*;
@@ -17,7 +19,13 @@ public class HomeController extends Controller {
      * <code>GET</code> request with a path of <code>/</code>.
      */
     public Result index() {
-        return ok(index.render("Your new application is ready."));
+    	String parentId= "100";
+    	String childId = "1";
+    	
+    	Parent parent = Parent.findByPK(parentId);
+    	Child child= Child.findByPK(childId);
+    	
+        return ok(index.render(parent, child));
     }
 
 }
