@@ -3,6 +3,8 @@ package models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.avaje.ebean.Model;
@@ -19,10 +21,16 @@ public class Parent extends Model {
 	@Column(name="name")
 	public String name;
 	
-	@Column(name="child_id")
-	public String childId;
+	@OneToOne
+	@JoinColumn(name="child_id")
+	public Child child;
 	
 	public static Parent findByPK(String id) {
-		return FINDER.byId(id);
+		// @OnetToOneは必要(ないとjoinされない)
+		// @JoinColumnでjoinするIDを指定する(なくてもデフォルトの名前で行ける気がする
+		// fetchが必要 joinする変数名
+		// Child側に設定は不要
+		// 更新してもChild側に影響なことを確認
+		return FINDER.fetch("child").where().eq("id", id).findUnique();
 	}
 }

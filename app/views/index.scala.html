@@ -1,15 +1,10 @@
-@(parent: Parent, child: Child)
+@(parent: Parent)
 
 @main("Welcome to Play") {
-	<h2>Parent</h2>
+	<h2>Parent1</h2>
 	<ul>
 		<li>@parent.id</li>
 		<li>@parent.name</li>
-		<li>@parent.childId</li>
-	</ul>
-	<h2>Child</h2>
-	<ul>
-		<li>@child.id</li>
-		<li>@child.name</li>
+		<li>@parent.child</li>
 	</ul>
 }

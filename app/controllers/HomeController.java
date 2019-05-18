@@ -1,5 +1,7 @@
 package controllers;
 
+import java.time.LocalDateTime;
+
 import models.Child;
 import models.Parent;
 import play.mvc.*;
@@ -20,12 +22,10 @@ public class HomeController extends Controller {
      */
     public Result index() {
     	String parentId= "100";
-    	String childId = "1";
     	
     	Parent parent = Parent.findByPK(parentId);
-    	Child child= Child.findByPK(childId);
     	
-        return ok(index.render(parent, child));
+        return ok(index.render(parent));
     }
 
 }
