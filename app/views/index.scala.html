@@ -1,4 +1,4 @@
-@(parent: Parent)
+@(parent: Parent, parents: List[Parent])
 
 @main("Welcome to Play") {
 	<h2>Parent1</h2>
@@ -7,4 +7,11 @@
 		<li>@parent.name</li>
 		<li>@parent.child</li>
 	</ul>
+	<h2>Parent2</h2>
+	@for(parent <- parents) {
+		<ul>
+			<li>@parent.name</li>
+    	    <li>@parent.child</li>
+    	</ul>
+    }
 }

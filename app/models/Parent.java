@@ -1,5 +1,7 @@
 package models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -32,5 +34,9 @@ public class Parent extends Model {
 		// Child側に設定は不要
 		// 更新してもChild側に影響なことを確認
 		return FINDER.fetch("child").where().eq("id", id).findUnique();
+	}
+
+	public static List<Parent> findByChildName(String childName) {
+		return FINDER.fetch("child").where().like("child.name", "%" + childName + "%").findList();
 	}
 }
